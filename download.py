@@ -33,13 +33,15 @@ from torchmetrics import PSNR, SSIM, AveragePrecision
 try:
     from tqdm import tqdm
 except Exception as e:
-    raise ImportError(f"""
+    raise ImportError(
+        f"""
         Cannot Import Tqdm try installing it using 
         `pip3 install tqdm` 
         or 
         `conda install tqdm`.
         \n 
-        {e}""")
+        {e}"""
+    )
 try:
     import ray
     from ray import tune
@@ -268,7 +270,6 @@ class Download:
         Return: pd.DataFrame
         """
         try:
-
             print("Loading bbox")
             bboxs_df = pd.read_csv(self.bboxs[0])
             loader_iter = tqdm(range(1, len(self.bboxs)))
@@ -380,12 +381,13 @@ class Download:
                 return True
             print("Creating Box")
             bboxs = self.load_bbox()
+            print("Loaded Bbox")
             for imgid in zip(
-                tqdm(bboxs["ImageID"]),
-                bboxs["XMin"],
-                bboxs["YMin"],
-                bboxs["XMax"],
-                bboxs["YMax"],
+                tqdm(bboxs["ImageID"][:5000]),
+                bboxs["XMin"][:5000],
+                bboxs["YMin"][:5000],
+                bboxs["XMax"][:5000],
+                bboxs["YMax"][:5000],
             ):
                 imgid = list(imgid)
                 if str(imgid[0]) in self.imageids:
