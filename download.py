@@ -110,27 +110,13 @@ class Download:
             self.download_url_data = []
         if labels is None:
             labels = [
-                "/m/01h44",
-                "/m/01m0p1",
-                "/m/02hhhb",
-                "/m/0449p",
-                "/m/0464z4",
-                "/m/04lmyz",
-                "/m/09141t",
-                "/m/0cqdf",
-                "/m/0jbk",
+                "/m/04v2k7",
+                "/m/0k4j",
             ]
         if labels_r is None:
             labels_r = [
-                "/m/01h44",
-                "/m/01m0p1",
-                "/m/02hhhb",
-                "/m/0449p",
-                "/m/0464z4",
-                "/m/04lmyz",
-                "/m/09141t",
-                "/m/0cqdf",
-                "/m/0jbk",
+               "/m/04v2k7",
+                "/m/0k4j",
             ]
         if labels_and_imageids is None:
             labels_and_imageids = [
@@ -371,23 +357,23 @@ class Download:
 
             if self.recover is True and (
                 os.path.exists(
-                    "/media/indika/Sync/Programmer-RD-AI/Programming/Projects/Python/Rest-Api/Car-Object-Detection-REST-API/Find-Card/ML/Model/dataset/save/create_bbox.csv"
+                    "./save/create_bbox.csv"
                 )
                 is True
             ):
                 self.images_and_bbox_and_imgid_ = pd.read_csv(
-                    "/media/indika/Sync/Programmer-RD-AI/Programming/Projects/Python/Rest-Api/Car-Object-Detection-REST-API/Find-Card/ML/Model/dataset/save/create_bbox.csv"
+                    "./save/create_bbox.csv"
                 )
                 return True
             print("Creating Box")
             bboxs = self.load_bbox()
             print("Loaded Bbox")
             for imgid in zip(
-                tqdm(bboxs["ImageID"][:5000]),
-                bboxs["XMin"][:5000],
-                bboxs["YMin"][:5000],
-                bboxs["XMax"][:5000],
-                bboxs["YMax"][:5000],
+                tqdm(bboxs["ImageID"][:10000]),
+                bboxs["XMin"][:10000],
+                bboxs["YMin"][:10000],
+                bboxs["XMax"][:10000],
+                bboxs["YMax"][:10000],
             ):
                 imgid = list(imgid)
                 if str(imgid[0]) in self.imageids:
@@ -405,7 +391,7 @@ class Download:
                         args=[imgid[0]],
                     ).start()
             np.save(
-                "/media/indika/Sync/Programmer-RD-AI/Programming/Projects/Python/Rest-Api/Car-Object-Detection-REST-API/Find-Card/ML/Model/dataset/save/imageids.npy",
+                "./save/imageids.npy",
                 self.imgids,
             )
             del bboxs
@@ -415,7 +401,7 @@ class Download:
                 columns=["ImageID", "XMin", "YMin", "XMax", "YMax", "Labels"],
             )
             self.images_and_bbox_and_imgid_.to_csv(
-                "/media/indika/Sync/Programmer-RD-AI/Programming/Projects/Python/Rest-Api/Car-Object-Detection-REST-API/Find-Card/ML/Model/dataset/save/create_bbox.csv",
+                "./save/create_bbox.csv",
                 index=False,
             )
             print("Created Box")
@@ -444,12 +430,12 @@ class Download:
 
             if self.recover is True and (
                 os.path.exists(
-                    "/media/indika/Sync/Programmer-RD-AI/Programming/Projects/Python/Rest-Api/Car-Object-Detection-REST-API/Find-Card/ML/Model/dataset/save/create_image_urls.csv"
+                    "./save/create_image_urls.csv"
                 )
                 is True
             ):
                 self.download_url_data = pd.read_csv(
-                    "/media/indika/Sync/Programmer-RD-AI/Programming/Projects/Python/Rest-Api/Car-Object-Detection-REST-API/Find-Card/ML/Model/dataset/save/create_image_urls.csv"
+                    "./save/create_image_urls.csv"
                 )  # [: self.number_of_split]
                 self.download_url_data = self.download_url_data.drop_duplicates()
                 return True
@@ -514,7 +500,7 @@ class Download:
 
             data = pd.DataFrame(data)
             data.to_csv(
-                "/media/indika/Sync/Programmer-RD-AI/Programming/Projects/Python/Rest-Api/Car-Object-Detection-REST-API/Find-Card/ML/Model/dataset/save/create_image_urls.csv",
+                "./save/create_image_urls.csv",
                 index=False,
             )
             self.download_url_data = data
@@ -585,11 +571,11 @@ class Download:
                     print(e)
             data = pd.DataFrame(new_data)
             data.to_csv(
-                "/media/indika/Sync/Programmer-RD-AI/Programming/Projects/Python/Rest-Api/Car-Object-Detection-REST-API/Find-Card/ML/Model/dataset/save/Data.csv",
+                "./save/Data.csv",
                 index=False,
             )
             data.to_json(
-                "/media/indika/Sync/Programmer-RD-AI/Programming/Projects/Python/Rest-Api/Car-Object-Detection-REST-API/Find-Card/ML/Model/dataset/save/Data.json",
+                "./save/Data.json",
             )
             print("Downloaded Images")
             return new_data
