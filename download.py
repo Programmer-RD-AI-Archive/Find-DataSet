@@ -110,13 +110,12 @@ class Download:
             self.download_url_data = []
         if labels is None:
             labels = [
-                "/m/04v2k7",
-                "/m/0k4j",
+                "/m/014j1m",
+                
             ]
         if labels_r is None:
             labels_r = [
-               "/m/04v2k7",
-                "/m/0k4j",
+             "/m/014j1m",
             ]
         if labels_and_imageids is None:
             labels_and_imageids = [
