@@ -110,12 +110,11 @@ class Download:
             self.download_url_data = []
         if labels is None:
             labels = [
-                "/m/014j1m",
-                
+                "/m/077hh",
             ]
         if labels_r is None:
             labels_r = [
-             "/m/014j1m",
+                "/m/077hh",
             ]
         if labels_and_imageids is None:
             labels_and_imageids = [
@@ -354,25 +353,18 @@ class Download:
         """
         try:
 
-            if self.recover is True and (
-                os.path.exists(
-                    "./save/create_bbox.csv"
-                )
-                is True
-            ):
-                self.images_and_bbox_and_imgid_ = pd.read_csv(
-                    "./save/create_bbox.csv"
-                )
+            if self.recover is True and (os.path.exists("./save/create_bbox.csv") is True):
+                self.images_and_bbox_and_imgid_ = pd.read_csv("./save/create_bbox.csv")
                 return True
             print("Creating Box")
             bboxs = self.load_bbox()
             print("Loaded Bbox")
             for imgid in zip(
-                tqdm(bboxs["ImageID"][:10000]),
-                bboxs["XMin"][:10000],
-                bboxs["YMin"][:10000],
-                bboxs["XMax"][:10000],
-                bboxs["YMax"][:10000],
+                tqdm(bboxs["ImageID"][:25000]),
+                bboxs["XMin"][:25000],
+                bboxs["YMin"][:25000],
+                bboxs["XMax"][:25000],
+                bboxs["YMax"][:25000],
             ):
                 imgid = list(imgid)
                 if str(imgid[0]) in self.imageids:
@@ -427,12 +419,7 @@ class Download:
         """
         try:
 
-            if self.recover is True and (
-                os.path.exists(
-                    "./save/create_image_urls.csv"
-                )
-                is True
-            ):
+            if self.recover is True and (os.path.exists("./save/create_image_urls.csv") is True):
                 self.download_url_data = pd.read_csv(
                     "./save/create_image_urls.csv"
                 )  # [: self.number_of_split]
