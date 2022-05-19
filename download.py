@@ -360,11 +360,11 @@ class Download:
             bboxs = self.load_bbox()
             print("Loaded Bbox")
             for imgid in zip(
-                tqdm(bboxs["ImageID"][:25000]),
-                bboxs["XMin"][:25000],
-                bboxs["YMin"][:25000],
-                bboxs["XMax"][:25000],
-                bboxs["YMax"][:25000],
+                tqdm(bboxs["ImageID"]),
+                bboxs["XMin"],
+                bboxs["YMin"],
+                bboxs["XMax"],
+                bboxs["YMax"],
             ):
                 imgid = list(imgid)
                 if str(imgid[0]) in self.imageids:
