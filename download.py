@@ -109,12 +109,10 @@ class Download:
         if download_url_data is None:
             self.download_url_data = []
         if labels is None:
-            labels = [
-                "/m/012mq4",
-            ]
+            labels = ["/m/01m3v"]
         if labels_r is None:
             labels_r = [
-                "/m/012mq4",
+                "/m/01m3v",
             ]
         if labels_and_imageids is None:
             labels_and_imageids = [
