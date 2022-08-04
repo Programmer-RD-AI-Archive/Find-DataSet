@@ -4,7 +4,6 @@ import ast
 import gc
 import os
 import threading
-from concurrent.futures.process import _ExceptionWithTraceback
 
 try:
     from urllib.request import urlretrieve  # Python 3
@@ -15,20 +14,6 @@ import cv2
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import torch
-import torchvision
-import wandb
-from detectron2 import model_zoo
-from detectron2.config import get_cfg
-from detectron2.config.config import CfgNode
-from detectron2.data import DatasetCatalog, MetadataCatalog, build_detection_test_loader
-from detectron2.engine import DefaultPredictor, DefaultTrainer
-from detectron2.evaluation import COCOEvaluator, inference_on_dataset
-from detectron2.structures import BoxMode
-from detectron2.utils.logger import setup_logger
-from detectron2.utils.visualizer import Visualizer
-from sklearn.model_selection import ParameterGrid
-from torchmetrics import PSNR, SSIM, AveragePrecision
 
 try:
     from tqdm import tqdm
