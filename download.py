@@ -94,9 +94,9 @@ class Download:
         if download_url_data is None:
             self.download_url_data = []
         if labels is None:
-            labels = ["/m/01f0yy", "/m/080fpx0", "/m/0_d6n", "/m/0lvmz"]
+            labels = ["/m/0bt9lr"]
         if labels_r is None:
-            labels_r = ["/m/01f0yy", "/m/080fpx0", "/m/0_d6n", "/m/0lvmz"]
+            labels_r = ["/m/0bt9lr"]
         if labels_and_imageids is None:
             labels_and_imageids = [
                 "/media/indika/Sync/Programmer-RD-AI/Programming/Projects/Python/Rest-Api/Car-Object-Detection-REST-API/Find-Card/ML/Model/dataset/open_image_raw_data/oidv6-train-annotations-human-imagelabels.csv",
