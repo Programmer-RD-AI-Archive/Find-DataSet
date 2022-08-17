@@ -243,7 +243,7 @@ class Download:
                 bboxs_df = bboxs_df.append(pd.read_csv(self.bboxs[i]))
             bboxs_df.sample(frac=1)
 
-            return bboxs_df
+            return bboxs_df[:250000]
         except Exception as e:
             raise ValueError(
                 f"""
