@@ -59,7 +59,7 @@ class Download:
         download_url_data: pd.DataFrame = None,
         imageids_labels: dict = None,
         recover: bool = False,
-        number_of_split: int = 25000,
+        number_of_split: int = 100000,
     ) -> None:
         """summary_line
         Keyword arguments:
@@ -215,7 +215,7 @@ class Download:
                 )
                 loader_iter.set_description(str(len(labels_and_imageid)))
             labels_and_imageid.sample(frac=1)
-            return labels_and_imageid[:25000]
+            return labels_and_imageid[:100000]
         except Exception as e:
             raise ValueError(
                 f"""
@@ -243,7 +243,7 @@ class Download:
                 bboxs_df = bboxs_df.append(pd.read_csv(self.bboxs[i]))
             bboxs_df.sample(frac=1)
 
-            return bboxs_df[:25000]
+            return bboxs_df[:100000]
         except Exception as e:
             raise ValueError(
                 f"""
@@ -273,7 +273,7 @@ class Download:
             image_urls_df.sample(frac=1)
 
             print("Loaded Image Urls")
-            return image_urls_df[:25000]
+            return image_urls_df[:100000]
         except Exception as e:
             raise ValueError(
                 f"""
