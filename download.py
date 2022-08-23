@@ -94,9 +94,9 @@ class Download:
         if download_url_data is None:
             self.download_url_data = []
         if labels is None:
-            labels = ["/m/0k4j"]
+            labels = ["/m/0jxy"]
         if labels_r is None:
-            labels_r = ["/m/0k4j"]
+            labels_r = ["/m/0jxy"]
         if labels_and_imageids is None:
             labels_and_imageids = [
                 "/media/indika/Sync/Programmer-RD-AI/Programming/Projects/Python/Rest-Api/Car-Object-Detection-REST-API/Find-Card/ML/Model/dataset/open_image_raw_data/oidv6-train-annotations-human-imagelabels.csv",
@@ -243,7 +243,7 @@ class Download:
                 bboxs_df = bboxs_df.append(pd.read_csv(self.bboxs[i]))
             bboxs_df.sample(frac=1)
 
-            return bboxs_df[:250000]
+            return bboxs_df
         except Exception as e:
             raise ValueError(
                 f"""
